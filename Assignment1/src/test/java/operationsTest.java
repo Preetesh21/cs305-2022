@@ -39,17 +39,17 @@ class operationsTest {
     }
 
     @Test
-    void propagatePropsToQuery() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
+    void queryHelper() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
         Connection conn = new_obj.Connection(1);
         String sql="Select * from actor where actor_id=${propX};";
-        new_obj.propagatePropsToQuery(sql,1,conn);
+        new_obj.queryHelper(sql,1,conn);
     }
 
     @Test
-    void propagatePropsToQuery2() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
+    void insertObjectHelper() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
         Connection conn = new_obj.Connection(1);
         String sql="Select * from actor where actor_id=(${propX});";
-        new_obj.propagatePropsToQuery2(sql,1,conn);
+        new_obj.insertObjectHelper(sql,1,conn);
     }
 
     @Test

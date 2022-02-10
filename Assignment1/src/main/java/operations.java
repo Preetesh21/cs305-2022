@@ -47,7 +47,7 @@ public class operations implements SqlRunner{
         return 0;
     }
 
-    PreparedStatement propagatePropsToQuery(String sqlQuery, Object queryParamObj,Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
+    PreparedStatement queryHelper(String sqlQuery, Object queryParamObj, Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
 
         Pattern pattern = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(sqlQuery);
@@ -117,7 +117,7 @@ public class operations implements SqlRunner{
         return statement;
     }
 
-    PreparedStatement propagatePropsToQuery2(String sqlQuery, Object queryParamObj,Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
+    PreparedStatement insertObjectHelper(String sqlQuery, Object queryParamObj, Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
         String prefix = "";
         Pattern pattern = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(sqlQuery);
@@ -208,7 +208,7 @@ public class operations implements SqlRunner{
                 System.out.println("Class Name MisMatch");
                 return null;
             }
-            PreparedStatement stat =propagatePropsToQuery(arr[0],queryParam,con);
+            PreparedStatement stat = queryHelper(arr[0],queryParam,con);
             //PreparedStatement stat=con.prepareStatement("select PersonID,LastName from Classes.Persons where PersonID =?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
             ResultSet resultSet;
@@ -318,7 +318,7 @@ public class operations implements SqlRunner{
                 System.out.println("Class Name MisMatch");
                 return null;
             }
-            PreparedStatement stat =propagatePropsToQuery(arr[0],queryParam,con);
+            PreparedStatement stat = queryHelper(arr[0],queryParam,con);
             ResultSet resultSet,rs;
             try {
                 resultSet = stat.executeQuery();
@@ -418,7 +418,7 @@ public class operations implements SqlRunner{
                 System.out.println("Class Name MisMatch");
                 return -1;
             }
-            PreparedStatement stat =propagatePropsToQuery(arr[0],queryParam,con);
+            PreparedStatement stat = queryHelper(arr[0],queryParam,con);
             //System.out.println(stat);
             int count;
             try {
@@ -487,7 +487,7 @@ public class operations implements SqlRunner{
                 Object value = field.get(o);
                 //System.out.printf("%s: %s%n", name, value);
             }
-            PreparedStatement stat =propagatePropsToQuery2(arr[0],queryParam,con);
+            PreparedStatement stat = insertObjectHelper(arr[0],queryParam,con);
             int count;
             try {
                 count = stat.executeUpdate();
@@ -525,7 +525,7 @@ public class operations implements SqlRunner{
                 System.out.println("Class Name MisMatch");
                 return -1;
             }
-            PreparedStatement stat =propagatePropsToQuery(arr[0],queryParam,con);
+            PreparedStatement stat = queryHelper(arr[0],queryParam,con);
             //String query=" UPDATE Classes.Persons SET LastName=\"Perez\"  WHERE PersonID=1;";
             int count;
             try {
