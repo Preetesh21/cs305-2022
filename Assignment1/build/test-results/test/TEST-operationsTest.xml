@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="operationsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-10T12:42:13" hostname="hp-HP-Laptop-15-da0xxx" time="0.707">
+<testsuite name="operationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-02-10T21:00:16" hostname="hp-HP-Laptop-15-da0xxx" time="1.8">
   <properties/>
-  <testcase name="delete()" classname="operationsTest" time="0.707"/>
-  <system-out><![CDATA[qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq11
-DELETE from actor where actor_id = 
-java.lang.Integerjava.lang.Integer
-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-public final class java.lang.Integer
-false
-100
-35 xxx 43
-DELETE from actor where actor_id =  ? 
---------------
-Final Query::: DELETE from actor where actor_id =  ? 
-Prop::: 0 ::: 100
-com.mysql.cj.jdbc.ClientPreparedStatement: DELETE from actor where actor_id =  '100' 
-The number of rows affected are:1
+  <testcase name="selectOne()" classname="operationsTest" time="0.632"/>
+  <testcase name="selectMany()" classname="operationsTest" time="0.083"/>
+  <testcase name="propagatePropsToQuery2()" classname="operationsTest" time="0.015"/>
+  <testcase name="insert()" classname="operationsTest" time="0.366"/>
+  <testcase name="update()" classname="operationsTest" time="0.137"/>
+  <testcase name="connection()" classname="operationsTest" time="0.027"/>
+  <testcase name="attempt()" classname="operationsTest" time="0.002"/>
+  <testcase name="propagatePropsToQuery()" classname="operationsTest" time="0.011"/>
+  <testcase name="last()" classname="operationsTest" time="0.52"/>
+  <system-out><![CDATA[class not found.
+No rows found
+Multiple Rows Selected
+SQL Query Failed
+Class Name MisMatch
+class not found
+SQL Query Failed
+Class Name MisMatch
+Class MisMatch
+SQL Query Failed
+0
+Class Name MisMatch
+SQL Query Failed
+1
+Error in Password
+1
+Class Name MisMatch
+-1
+SQL Query Failed
+-1
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

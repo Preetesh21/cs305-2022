@@ -1,15 +1,25 @@
-%qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq11
-$DELETE from actor where actor_id = 
-#java.lang.Integerjava.lang.Integer
-/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-%public final class java.lang.Integer
-false
-100
-
-35 xxx 43
-'DELETE from actor where actor_id =  ? 
---------------
-6Final Query::: DELETE from actor where actor_id =  ? 
-Prop::: 0 ::: 100
-Vcom.mysql.cj.jdbc.ClientPreparedStatement: DELETE from actor where actor_id =  '100' 
-"The number of rows affected are:1
+class not found.
+No rows found
+Multiple Rows Selected
+SQL Query Failed
+Class Name MisMatch
+class not found
+SQL Query Failed
+Class Name MisMatch
+Class MisMatch
+SQL Query Failed
+0
+Class Name MisMatch
+SQL Query Failed
+1
+Error in Password
+
+1
+
+Class Name MisMatch
+
+-1
+
+SQL Query Failed
+
+-1

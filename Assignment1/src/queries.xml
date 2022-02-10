@@ -1,28 +1,71 @@
 <?xml version = "1.0"?>
 <queries>
-    <sql id="findActor" paramType="Classes.actor">
+    <sql id="findActor" paramType="java.util.ArrayList">
         <![CDATA[
-      select * from actor where last_name IN ${propX}
+      select * from actor where last_name IN ${propX};
       ]]>
     </sql>
+    <sql id="findActorss" paramType="[Ljava.lang.String;">
+        <![CDATA[
+      select * from actor where last_name IN ${propX};
+      ]]>
+    </sql>
+    <sql id="findActorString" paramType="java.lang.String">
+        <![CDATA[
+      select * from actor where last_name = ${propX};
+      ]]>
+    </sql>
+    <sql id="findActorArray" paramType="[I">
+        <![CDATA[
+      select * from actor where actor_id IN ${propX};
+      ]]>
+    </sql>
+    <sql id="findActorInt" paramType="java.lang.Integer">
+        <![CDATA[
+      select * from actor where actor_id = ${propX};
+      ]]>
+    </sql>
+
+
     <sql id="addActor" paramType="Classes.actor">
         <![CDATA[
         INSERT INTO actor VALUES(${actor_id}, ${first_name}, ${last_name}, ${last_update});
         ]]>
     </sql>
-    <sql id="updateActor" paramType="Classes.actor">
+    <sql id="addActors" paramType="Classes.actor">
+        <![CDATA[
+        INSERT INTO actors VALUES(${actor_id}, ${first_name}, ${last_name}, ${last_update});
+        ]]>
+    </sql>
+    <sql id="updateActor" paramType="param1">
         <![CDATA[
         UPDATE actor SET last_name= ${propY}  WHERE last_name= ${propX};
         ]]>
     </sql>
-    <sql id="findActors" paramType="Classes.actor">
+    <sql id="updateActors" paramType="param1">
         <![CDATA[
-      select * from actor where last_name IN ${propX}
+        UPDATE actors SET last_name= ${propY}  WHERE last_name= ${propX};
+        ]]>
+    </sql>
+    <sql id="findActors" paramType="java.util.ArrayList">
+        <![CDATA[
+      select * from actors where last_name IN ${propX};
       ]]>
     </sql>
-    <sql id="deleteActor" paramType="Classes.actor">
+    <sql id="deleteActor" paramType="java.lang.Integer">
         <![CDATA[
-      DELETE from actor where actor_id = ${propX}
+      DELETE from actor where actor_id = ${propX};
       ]]>
     </sql>
+    <sql id="deleteActors" paramType="java.lang.Integer">
+        <![CDATA[
+      DELETE from actors where actor_id = ${propX};
+      ]]>
+    </sql>
+    <sql id="Actors" paramType="java.util.ArrayList">
+        <![CDATA[
+      UPDATE actor SET last_update= ${propX}  WHERE last_name= "RamosIV";
+      ]]>
+    </sql>
+
 </queries>

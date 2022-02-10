@@ -5,11 +5,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
-
-public class attempt {
-
+public class xml_parser {
     public static String[] find(String arg1) {
-
         try {
             File inputFile = new File("src/queries.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -28,7 +25,6 @@ public class attempt {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return null;
     }
