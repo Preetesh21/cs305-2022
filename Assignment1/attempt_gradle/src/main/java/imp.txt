@@ -1,0 +1,25 @@
+byte[] me = new byte[1];
+int[] me2 = new int[1];
+double[] me3 = new double[1];
+float[] me4 = new float[1];
+String[] me5 = new String[1];
+Integer[] me6 = new Integer[1];
+
+System.out.println(me.getClass());
+System.out.println(me2.getClass());
+System.out.println(me3.getClass());
+System.out.println(me4.getClass());
+System.out.println(me5.getClass());
+System.out.println(me6.getClass());
+and the output is:
+
+ class [B
+ class [I
+ class [D
+ class [F
+ class [Ljava.lang.String;
+ class [Ljava.lang.Integer;
+
+
+ List<?>:::: java.util.ArrayList
+String :::: java.lang.String

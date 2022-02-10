@@ -1,0 +1,15 @@
+%qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq11
+$DELETE from actor where actor_id = 
+#java.lang.Integerjava.lang.Integer
+/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+%public final class java.lang.Integer
+false
+100
+
+35 xxx 43
+'DELETE from actor where actor_id =  ? 
+--------------
+6Final Query::: DELETE from actor where actor_id =  ? 
+Prop::: 0 ::: 100
+Vcom.mysql.cj.jdbc.ClientPreparedStatement: DELETE from actor where actor_id =  '100' 
+"The number of rows affected are:1

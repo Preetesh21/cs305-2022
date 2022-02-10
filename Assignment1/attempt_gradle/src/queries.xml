@@ -1,0 +1,28 @@
+<?xml version = "1.0"?>
+<queries>
+    <sql id="findActor" paramType="Classes.actor">
+        <![CDATA[
+      select * from actor where last_name IN ${propX}
+      ]]>
+    </sql>
+    <sql id="addActor" paramType="Classes.actor">
+        <![CDATA[
+        INSERT INTO actor VALUES(${actor_id}, ${first_name}, ${last_name}, ${last_update});
+        ]]>
+    </sql>
+    <sql id="updateActor" paramType="Classes.actor">
+        <![CDATA[
+        UPDATE actor SET last_name= ${propY}  WHERE last_name= ${propX};
+        ]]>
+    </sql>
+    <sql id="findActors" paramType="Classes.actor">
+        <![CDATA[
+      select * from actor where last_name IN ${propX}
+      ]]>
+    </sql>
+    <sql id="deleteActor" paramType="Classes.actor">
+        <![CDATA[
+      DELETE from actor where actor_id = ${propX}
+      ]]>
+    </sql>
+</queries>
