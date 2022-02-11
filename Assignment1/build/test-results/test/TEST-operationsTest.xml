@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="operationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-02-11T12:13:29" hostname="hp-HP-Laptop-15-da0xxx" time="3.085">
+<testsuite name="operationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-02-11T12:17:00" hostname="hp-HP-Laptop-15-da0xxx" time="3.199">
   <properties/>
-  <testcase name="selectOne()" classname="operationsTest" time="1.692"/>
-  <testcase name="selectMany()" classname="operationsTest" time="0.21"/>
-  <testcase name="queryHelper()" classname="operationsTest" time="0.031"/>
-  <testcase name="insert()" classname="operationsTest" time="0.232"/>
-  <testcase name="update()" classname="operationsTest" time="0.439"/>
-  <testcase name="connection()" classname="operationsTest" time="0.043"/>
-  <testcase name="attempt()" classname="operationsTest" time="0.004"/>
-  <testcase name="last()" classname="operationsTest" time="0.369"/>
-  <testcase name="insertObjectHelper()" classname="operationsTest" time="0.053"/>
+  <testcase name="selectOne()" classname="operationsTest" time="1.649"/>
+  <testcase name="selectMany()" classname="operationsTest" time="0.162"/>
+  <testcase name="queryHelper()" classname="operationsTest" time="0.025"/>
+  <testcase name="insert()" classname="operationsTest" time="0.533"/>
+  <testcase name="update()" classname="operationsTest" time="0.49"/>
+  <testcase name="connection()" classname="operationsTest" time="0.054"/>
+  <testcase name="attempt()" classname="operationsTest" time="0.008"/>
+  <testcase name="last()" classname="operationsTest" time="0.234"/>
+  <testcase name="insertObjectHelper()" classname="operationsTest" time="0.029"/>
   <system-out><![CDATA[class not found.
 No rows found
 Multiple Rows Selected
