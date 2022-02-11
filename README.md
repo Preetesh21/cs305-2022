@@ -183,22 +183,41 @@ The paramtype value needs to be adjusted as well according to the type of Object
 (e.g. 5 is java.lang.Integer, false is java.lang.Boolean, "string" is java.lang.String, 5.32 is java.lang.Float,int[]: [I,   String []: [Ljava.lang.String;  List<>: java.util.ArrayList  etc).
 
 E.g. Suppose we want to create a query to select one actor with actor_id=17.
+```
 Query:: SELECT * from actor where actor_id = ${propX};
+```
 
 Create an entry in the XML file with sql node.Supply it with a valid unique id and paramType of the kind of QueryParam that would be supplied to it.
 In our case it could be an integer or an object with attribute propX.
 So lets try with first option.
-
+```
 <sql id="latestQuery" paramType="java.lang.Integer">
         <![CDATA[
       select * from actor where actor_id = ${propX};
       ]]>
 </sql>
+```
 Now in the operationsTest.java go under the selectOne function tester and create an integer variable(or directly pass integer value in the function call). Call the respective function as
 
+```
 Object resultObj = new_obj.selectOne("latestQuery",variable/value,actor.class);
+```
 
 Like this we could create several more queries and test.
+
+For list the way would be
+```
+List<Integer> tt2;
+tt2=new ArrayList<>();
+tt2.add(7);
+```
+
+for custom object
+```
+class_name new_param=new class_name();
+new_param.propX= ....;
+new_param.propY= ....;
+```
 
 ### Snapshots of the results
 
