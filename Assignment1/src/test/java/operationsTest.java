@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -35,25 +36,30 @@ class operationsTest {
 
     @Test
     void attempt(){
-        xml_parser.find("wewe");
+        String[] a=xml_parser.find("wewe");
+        assertNull(a);
     }
 
     @Test
     void queryHelper() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
         Connection conn = new_obj.Connection(1);
         String sql="Select * from actor where actor_id=${propX};";
-        new_obj.queryHelper(sql,1,conn);
+        String sql2="Select * from actor where actor_id= '1' ;";
+        PreparedStatement obj=new_obj.queryHelper(sql,1,conn);
+        assertNotNull(obj);
     }
 
     @Test
     void insertObjectHelper() throws SQLException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException {
         Connection conn = new_obj.Connection(1);
         String sql="Select * from actor where actor_id=(${propX});";
-        new_obj.insertObjectHelper(sql,1,conn);
+        PreparedStatement obj = new_obj.insertObjectHelper(sql,1,conn);
+        assertNotNull(obj);
     }
 
     @Test
     void selectOne() {
+
         List<String> tt;
         tt=new ArrayList<>();
         tt.add("KILMER");
@@ -98,15 +104,16 @@ class operationsTest {
 
     @Test
     void selectMany() {
-        String[] names={"KILMER"};
+        String[] names={"KILMER","BLOOM"};
         int[] array={4,5,6,7};
         List<Object> obj1,obj2,obj3;
         obj1= (List<Object>) new_obj.selectMany("findActorss", names, actor.class);
         assertNotNull(obj1);
+        assert (obj1.size()==2);
 
-        assert (obj1.size()==1);
         obj2= (List<Object>) new_obj.selectMany("findActors", names,null);
         assertNull(obj2);
+
         obj3= (List<Object>) new_obj.selectMany("findActorArray",array, actor.class);
         assertNotNull(obj3);
         assert (obj3.size()==4);
@@ -126,25 +133,28 @@ class operationsTest {
 
     @Test
     void update() {
+        Timestamp CreatedDate = Timestamp.valueOf("2022-02-10 02:42:42");
+        List<Timestamp> time;
+        time=new ArrayList<>();
+        time.add(CreatedDate);
+        int f=new_obj.update("Actors",time);
+        assert f==1;
+
         param1 new_param=new param1();
         new_param.propX= new ArrayList<>();
-        new_param.propX.add("PECK");
-        new_param.propY="RamosIV";
+        new_param.propX.add("RamosIV");
+        new_param.propY="PECK";
         int a=new_obj.update("updateActor",new_param);
-        System.out.println(a);
-        //assert a==1;
+        //System.out.println(a);
+        assert a==1;
 
         int b=new_obj.update("updateActor",null);
         assert b==-1;
 
         int c=new_obj.update("updateActors",new_param);
         assert c==-1;
-        Timestamp CreatedDate = Timestamp.valueOf("2022-02-10 02:42:42");
-        List<Timestamp> time;
-        time=new ArrayList<>();
-        time.add(CreatedDate);
-        int f=new_obj.update("Actors",time);
-        System.out.println(f);
+//
+
     }
 
     @Test
@@ -153,8 +163,10 @@ class operationsTest {
         actor new_actor=new actor(100,"Sergio","Alves",CreatedDate);
         int a=new_obj.insert("addActor", new_actor);
         assert a==1;
+
         int b=new_obj.insert("addActor", null);
         assert b==-1;
+
         int c=new_obj.insert("addActors", new_actor);
         assert c==-1;
     }
@@ -163,13 +175,15 @@ class operationsTest {
     void last() {
         int c;
         int a=new_obj.delete("deleteActor", 100);
-        System.out.println(a);
+        //System.out.println(a);
         assert a==1;
+
         int b=new_obj.delete("deleteActor", null);
-        System.out.println(b);
+        //System.out.println(b);
         assert b==-1;
+
         int d=new_obj.delete("deleteActors", 100);
-        System.out.println(d);
+        //System.out.println(d);
         assert d==-1;
     }
 }

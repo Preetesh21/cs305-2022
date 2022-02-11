@@ -48,58 +48,48 @@ public class operations implements SqlRunner{
     }
 
     PreparedStatement queryHelper(String sqlQuery, Object queryParamObj, Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
-
-        Pattern pattern = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(sqlQuery);
+        Pattern keyToSign = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = keyToSign.matcher(sqlQuery);
         StringBuilder builder = new StringBuilder();
         int last = -1;
-
         List<Object> propValues = new ArrayList<>();
         while (matcher.find()) {
+            int start = matcher.start(1);
+            int end = matcher.end(1);
             String match = matcher.group(1);
             int len = match.length();
             String propName = match.substring(2, len - 1);
-
-            int start = matcher.start(1);
-            int end = matcher.end(1);
-
             String tmp;
             if (last != -1) {
-                // fill from [last+1....start-1]
                 assert (last != start);
                 tmp = sqlQuery.substring(last + 1, start);
             } else {
-                // fill from [0...start-1]
                 tmp = sqlQuery.substring(0, start);
             }
             builder.append(tmp);
             last = end;
-            // append the value
-
             Pair data = helper.getAttribute(propName, queryParamObj);
             assert data != null;
             Object value = ((Pair<?, ?>) data).getValue();
-
             if (value instanceof List<?>) {
                 List<?> vals = (List<?>) value;
-                int numberOfVals=vals.size();
+                int countElements=vals.size();
 
-                if (numberOfVals == 0) {
+                if (countElements == 0) {
                     builder.append(" (1=2) ");
                 } else {
                     builder.append(" (");
-                    for(int indx=0;indx<numberOfVals;indx++){
+                    for(int indx=0;indx<countElements;indx++){
                         Object val=vals.get(indx);
                         propValues.add(val.toString());
                         builder.append(" ? ");
-                        if(indx+1!=numberOfVals){
+                        if(indx+1!=countElements){
                             builder.append(" , ");
                         }
                     }
                     builder.append(") ");
                 }
             } else {
-                // add ?
                 builder.append(" ? ");
                 propValues.add(value.toString());
             }
@@ -110,7 +100,6 @@ public class operations implements SqlRunner{
             builder.append(temp);
         }
         PreparedStatement statement = connection.prepareStatement(builder.toString(),ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-
         for (int i = 0; i < propValues.size(); i++) {
             statement.setObject(i + 1, propValues.get(i));
         }
@@ -119,20 +108,17 @@ public class operations implements SqlRunner{
 
     PreparedStatement insertObjectHelper(String sqlQuery, Object queryParamObj, Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
         String prefix = "";
-        Pattern pattern = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(sqlQuery);
+        Pattern keyToSign = Pattern.compile("(\\$\\{\\w+\\})", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = keyToSign.matcher(sqlQuery);
         StringBuilder builder = new StringBuilder();
         int last = -1;
-        //int numberOfProps = 0;
         List<Object> propValues = new ArrayList<>();
         while (matcher.find()) {
+            int start = matcher.start(1);
+            int end = matcher.end(1);
             String match = matcher.group(1);
             int len = match.length();
             String propName = match.substring(2, len - 1);
-
-            int start = matcher.start(1);
-            int end = matcher.end(1);
-
             String tmp;
             if (last != -1) {
                 // fill from [last+1....start-1]
@@ -144,8 +130,6 @@ public class operations implements SqlRunner{
             }
             builder.append(tmp);
             last = end;
-            // append the value
-
             Pair data = helper.getAttribute(propName, queryParamObj);
             assert data != null;
             Object value = ((Pair<?, ?>) data).getValue();
@@ -156,9 +140,7 @@ public class operations implements SqlRunner{
             propValues.add(value);
         }
         builder.append(" ) ");
-
         PreparedStatement statement = connection.prepareStatement(builder.toString(),ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-
         for (int i = 0; i < propValues.size(); i++) {
             statement.setObject(i + 1, propValues.get(i));
         }

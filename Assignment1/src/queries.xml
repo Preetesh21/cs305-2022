@@ -25,8 +25,6 @@
       select * from actor where actor_id = ${propX};
       ]]>
     </sql>
-
-
     <sql id="addActor" paramType="Classes.actor">
         <![CDATA[
         INSERT INTO actor VALUES(${actor_id}, ${first_name}, ${last_name}, ${last_update});
