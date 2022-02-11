@@ -133,6 +133,14 @@ class operationsTest {
 
     @Test
     void update() {
+        param1 new_param=new param1();
+        new_param.propX= new ArrayList<>();
+        new_param.propX.add("PECK");
+        new_param.propY="RamosIV";
+        int a=new_obj.update("updateActor",new_param);
+        //System.out.println(a);
+        assert a==1;
+        
         Timestamp CreatedDate = Timestamp.valueOf("2022-02-10 02:42:42");
         List<Timestamp> time;
         time=new ArrayList<>();
@@ -140,13 +148,7 @@ class operationsTest {
         int f=new_obj.update("Actors",time);
         assert f==1;
 
-        param1 new_param=new param1();
-        new_param.propX= new ArrayList<>();
-        new_param.propX.add("RamosIV");
-        new_param.propY="PECK";
-        int a=new_obj.update("updateActor",new_param);
-        //System.out.println(a);
-        assert a==1;
+
 
         int b=new_obj.update("updateActor",null);
         assert b==-1;

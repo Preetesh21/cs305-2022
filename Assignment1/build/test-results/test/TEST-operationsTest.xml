@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="operationsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-11T11:41:24" hostname="hp-HP-Laptop-15-da0xxx" time="0.593">
+<testsuite name="operationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-02-11T12:13:29" hostname="hp-HP-Laptop-15-da0xxx" time="3.085">
   <properties/>
-  <testcase name="selectOne()" classname="operationsTest" time="0.593"/>
-  <system-out><![CDATA[7
+  <testcase name="selectOne()" classname="operationsTest" time="1.692"/>
+  <testcase name="selectMany()" classname="operationsTest" time="0.21"/>
+  <testcase name="queryHelper()" classname="operationsTest" time="0.031"/>
+  <testcase name="insert()" classname="operationsTest" time="0.232"/>
+  <testcase name="update()" classname="operationsTest" time="0.439"/>
+  <testcase name="connection()" classname="operationsTest" time="0.043"/>
+  <testcase name="attempt()" classname="operationsTest" time="0.004"/>
+  <testcase name="last()" classname="operationsTest" time="0.369"/>
+  <testcase name="insertObjectHelper()" classname="operationsTest" time="0.053"/>
+  <system-out><![CDATA[class not found.
+No rows found
+Multiple Rows Selected
+SQL Query Failed
+Class Name MisMatch
+class not found
+SQL Query Failed
+Class Name MisMatch
+Class MisMatch
+SQL Query Failed
+Class Name MisMatch
+SQL Query Failed
+Error in Password
+Class Name MisMatch
+SQL Query Failed
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
