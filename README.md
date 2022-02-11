@@ -163,6 +163,7 @@ This is the file containing the unit tests written by me to test the functions. 
 
 ## Procedure to run the files
 
+Clone the repo into the system. Then using any suitable IDE such as IntelliJ, Apache NetBeans etc. open the project cs305-2022/Assignment1 in it. Build the project. Then in the src/main/java/operations.java and there in the Connection function change the configurations as per the requirements. Then we can easily run the operationsTest.java using the IDE itself. 
 For running and testing we need to just run the operationsTest.java file. I used the Run operation button present on the IntelliJ. We need to just open the project in a IDE that supports Gradle and then use the Run option provided by it to run the operationsTest.java.
 
 For creating tests one has to do the following:
