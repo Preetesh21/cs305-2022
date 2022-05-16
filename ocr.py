@@ -10,5 +10,5 @@ class ocr:
         
     def get_text_from_image(self,img):
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        text = pytesseract.image_to_string(Image.fromarray(img), config='--psm 1', lang = self.lang)
+        text = pytesseract.image_to_string(Image.fromarray(img), lang = self.lang)
         return text
